@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: pankajexpressian/k8s-webapp:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: SA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql-secret
+              key: SA_PASSWORD
+        - name: SA_USER
+          valueFrom:
+            secretKeyRef:
+              name: mssql-secret
+              key: SA_USER
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DATABASE_NAME
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config
+              key: DATABASE_PORT
+        - name: SERVER
+          value: mssql-deployment  
+        volumeMounts:
+        - mountPath: /mnt
+          name: storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mssql-mdf-volume
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
