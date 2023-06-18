@@ -1,7 +1,7 @@
 # JUNE 2023 Kubernetes Assignment
 
 # Github Repository Link
-  https://github.com/pankajexpressian/k8s-api/settings
+  https://github.com/pankajexpressian/k8s-api
 
 # Dockerhub Image Links  
   
