@@ -1,9 +1,9 @@
-# NAGP 2023 Kubernetes Assignment
+# JUNE 2023 Kubernetes Assignment
 
 # Github Repository Link
   https://github.com/pankajexpressian/k8s-api/settings
 
-# Dockerhub Image Links Link  
+# Dockerhub Image Links  
   
   MS-SQL Server 
     https://hub.docker.com/_/microsoft-mssql-server
@@ -11,7 +11,7 @@
   API Application 
     https://hub.docker.com/r/pankajexpressian/k8s-webapp
 
-# API URL
+# API URLs
   
   GET  http://104.198.185.1/api/playlists/
   
