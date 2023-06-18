@@ -3,6 +3,10 @@
 # Github Repository Link
   https://github.com/pankajexpressian/k8s-api
 
+# YAML Files
+
+  https://github.com/pankajexpressian/k8s-api/tree/master/defination-files
+
 # Dockerhub Image Links  
   
   MS-SQL Server 
