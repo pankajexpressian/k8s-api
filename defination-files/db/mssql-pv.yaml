@@ -1,3 +1,4 @@
+
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -9,7 +10,9 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: mystorage
+
 ---
+
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -21,7 +24,9 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: mystorage
----	  
+
+---
+# mssql logs volume claim	  
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
